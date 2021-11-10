@@ -8,6 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './home/main/main.component';
 import { ChefComponent } from './chef/chef.component';
 import { WaiterComponent } from './waiter/waiter.component';
+import { MenuHeaderComponent } from './menu/components/menu-header/menu-header.component';
+import { MenuMainComponent } from './menu/components/menu-main/menu-main.component';
+import { SummaryComponent } from './menu/components/menu-main/summary/summary.component';
+import { OptionsComponent } from './menu/components/menu-main/options/options.component';
 
 @NgModule({
     imports:[
@@ -21,7 +25,11 @@ import { WaiterComponent } from './waiter/waiter.component';
     NavbarComponent,
     MainComponent,
     ChefComponent,
-    WaiterComponent
+    WaiterComponent,
+    MenuHeaderComponent,
+    MenuMainComponent,
+    SummaryComponent,
+    OptionsComponent
   ],
     exports:[],
     providers:[]

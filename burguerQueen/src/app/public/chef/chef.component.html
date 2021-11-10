@@ -1,1 +1,5 @@
-<p>chef works!</p>
+<div class="nav nav-tabs" id="nav-tab" role="tablist" *ngFor="let item of menus">
+    <button class="nav-link pb-0 pt-1 w-25 active w-25 d-flex justify-content-center flex-column align-items-center" id="{{item.name}}" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+        <p class="fs-6 fw-bold">{{item.name}}</p>
+      </button>
+</div>
