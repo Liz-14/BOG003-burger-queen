@@ -4,5 +4,5 @@ export class Menu {
   id: string | undefined;
   name: string | undefined;
   img: string | undefined;
-  items: Item[] | undefined;
+  items?: Item[] | undefined;
 }
