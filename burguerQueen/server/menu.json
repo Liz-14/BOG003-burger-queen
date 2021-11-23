@@ -9,48 +9,66 @@
           "id": "ac1",
           "name": "Hamburguesa",
           "options": [
-            "sencilla",
-            "doble"
-          ],
-          "price": [
-            10,
-            15
-          ],
-          "items": [
-            "res",
-            "pollo",
-            "vegetariana"
+            {
+              "name": "sencilla",
+              "price": 10
+            },
+            {
+              "name": "doble",
+              "price": 10
+            }
           ]
         },
         {
           "id": "ac2",
-          "name": "Acompañamiento",
+          "name": "Tipo",
           "options": [
-            "papas fritas",
-            "aros de cebolla"
-          ],
-          "price": [
-            5,
-            5
-          ],
-          "items": []
+            {
+              "name": "res"
+            },
+            {
+              "name": "pollo"
+            },
+            {
+              "name": "vegetariana"
+            }
+          ]
         },
         {
           "id": "ac3",
+          "name": "Acompañamiento",
+          "options": [
+            {
+              "name": "papas fritas",
+              "price": 5
+            },
+            {
+              "name": "aros de cebolla",
+              "price": 10
+            }
+          ]
+        },
+        {
+          "id": "ac4",
           "name": "Bebidas",
           "options": [
-            "agua 500ml",
-            "agua 700ml",
-            "bebida-gaseosa 500ml",
-            "bebida-gaseosa 700ml"
-          ],
-          "price": [
-            5,
-            7,
-            7,
-            10
-          ],
-          "items": []
+            {
+              "name": "agua 500ml",
+              "price": 5
+            },
+            {
+              "name": "agua 700ml",
+              "price": 7
+            },
+            {
+              "name": "gaseosa 500ml",
+              "price": 7
+            },
+            {
+              "name": "gaseosa 700ml",
+              "price": 10
+            }
+          ]
         }
       ]
     },
@@ -63,36 +81,35 @@
           "id": "d1",
           "name": "Cafe",
           "options": [
-            "americano",
-            "con leche"
-          ],
-          "price": [
-            5,
-            7
-          ],
-          "items": []
+            {
+              "name": "americano",
+              "price": 5
+            },
+            {
+              "name": "con leche",
+              "price": 7
+            }
+          ]
         },
         {
           "id": "d2",
           "name": "Sandwich",
           "options": [
-            "jamon y queso"
-          ],
-          "price": [
-            10
-          ],
-          "items": []
+            {
+              "name": "jamon y queso",
+              "price": 10
+            }
+          ]
         },
         {
           "id": "d3",
           "name": "Bebidas",
           "options": [
-            "jugo natural"
-          ],
-          "price": [
-            10
-          ],
-          "items": []
+            {
+              "name": "jugo natural",
+              "price": 7
+            }
+          ]
         }
       ]
     },
@@ -105,14 +122,15 @@
           "id": "a1",
           "name": "Adicionales",
           "options": [
-            "huevo",
-            "queso"
-          ],
-          "price": [
-            1,
-            1
-          ],
-          "items": []
+            {
+              "name": "huevo",
+              "price": 1
+            },
+            {
+              "name": "queso",
+              "price": 1
+            }
+          ]
         }
       ]
     }
