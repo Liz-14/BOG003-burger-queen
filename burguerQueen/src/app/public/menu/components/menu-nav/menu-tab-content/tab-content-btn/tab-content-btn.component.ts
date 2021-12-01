@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Item, Options } from 'src/app/clases/items';
+import { Options } from 'src/app/interfaces/menu.interface';
 
 @Component({
   selector: 'app-tab-content-btn',
@@ -7,9 +7,8 @@ import { Item, Options } from 'src/app/clases/items';
   styleUrls: ['./tab-content-btn.component.css']
 })
 export class TabContentBtnComponent implements OnInit {
-
   @Input() op!: Options;
-  @Output() addToSummary = new EventEmitter<Options>();
+  @Output() addToSummaryClick = new EventEmitter<Options>();
 
   constructor() { }
 
@@ -17,8 +16,8 @@ export class TabContentBtnComponent implements OnInit {
   }
 
   onClick(): void{
-    this.addToSummary.emit(this.op);
-    console.log(this.op);
+  this.addToSummaryClick.emit(this.op);
+
   }
 
 }

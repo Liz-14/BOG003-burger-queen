@@ -1,5 +1,5 @@
-import { Menu } from './../../../../../clases/menu';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Menu } from 'src/app/interfaces/menu.interface';
 
 @Component({
   selector: 'app-menu-nav-tab',
@@ -7,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./menu-nav-tab.component.css']
 })
 export class MenuNavTabComponent implements OnInit {
-
-  @Input() e!: Menu;
+  @Input() e!:Menu;
 
   constructor() { }
 

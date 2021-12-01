@@ -1,138 +1,158 @@
 {
- "menu": [
-    {
-      "id": "m1",
-      "name": "Almuerzo/Cena",
-      "img": "../../../assets/img/almuerzoIcon.svg",
-      "items": [
-        {
-          "id": "ac1",
-          "name": "Hamburguesa",
-          "options": [
-            {
-              "name": "sencilla",
-              "price": 10
-            },
-            {
-              "name": "doble",
-              "price": 10
-            }
-          ]
-        },
-        {
-          "id": "ac2",
-          "name": "Tipo",
-          "options": [
-            {
-              "name": "res"
-            },
-            {
-              "name": "pollo"
-            },
-            {
-              "name": "vegetariana"
-            }
-          ]
-        },
-        {
-          "id": "ac3",
-          "name": "Acompañamiento",
-          "options": [
-            {
-              "name": "papas fritas",
-              "price": 5
-            },
-            {
-              "name": "aros de cebolla",
-              "price": 10
-            }
-          ]
-        },
-        {
-          "id": "ac4",
-          "name": "Bebidas",
-          "options": [
-            {
-              "name": "agua 500ml",
-              "price": 5
-            },
-            {
-              "name": "agua 700ml",
-              "price": 7
-            },
-            {
-              "name": "gaseosa 500ml",
-              "price": 7
-            },
-            {
-              "name": "gaseosa 700ml",
-              "price": 10
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "m2",
-      "name": "Desayuno",
-      "img": "../../../assets/img/desayunoIcon.svg",
-      "items": [
-        {
-          "id": "d1",
-          "name": "Cafe",
-          "options": [
-            {
-              "name": "americano",
-              "price": 5
-            },
-            {
-              "name": "con leche",
-              "price": 7
-            }
-          ]
-        },
-        {
-          "id": "d2",
-          "name": "Sandwich",
-          "options": [
-            {
-              "name": "jamon y queso",
-              "price": 10
-            }
-          ]
-        },
-        {
-          "id": "d3",
-          "name": "Bebidas",
-          "options": [
-            {
-              "name": "jugo natural",
-              "price": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "m3",
-      "name": "Adicionales",
-      "img": "../../../assets/img/adicionalesIcon.svg",
-      "items": [
-        {
-          "id": "a1",
-          "name": "Adicionales",
-          "options": [
-            {
-              "name": "huevo",
-              "price": 1
-            },
-            {
-              "name": "queso",
-              "price": 1
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+  "menu": [
+     {
+       "id": "m1",
+       "name": "Almuerzo/Cena",
+       "img": "../../../assets/img/almuerzoIcon.svg",
+       "items": [
+         {
+           "id": "ac1",
+           "name": "Hamburguesa",
+           "options": [
+             {
+               "id": "m1ac1op1",
+               "name": "sencilla",
+               "price": 10
+             },
+             {
+               "id": "m1ac1op2",
+               "name": "doble",
+               "price": 10
+             }
+           ]
+         },
+         {
+           "id": "ac2",
+           "name": "Tipo",
+           "options": [
+             {
+               "id": "m1ac2op1",
+               "name": "res",
+               "price": 0
+             },
+             {
+               "id": "m1ac2op2",
+               "name": "pollo",
+               "price": 0
+             },
+             {
+               "id": "m1ac2op3",
+               "name": "vegetariana",
+               "price": 0
+             }
+           ]
+         },
+         {
+           "id": "ac3",
+           "name": "Acompañamiento",
+           "options": [
+             {
+               "id": "m1ac3op1",
+               "name": "papas fritas",
+               "price": 5
+             },
+             {
+               "id": "m1ac3op2",
+               "name": "aros de cebolla",
+               "price": 10
+             }
+           ]
+         },
+         {
+           "id": "ac4",
+           "name": "Bebidas",
+           "options": [
+             {
+               "id": "m1ac4op1",
+               "name": "agua 500ml",
+               "price": 5
+             },
+             {
+               "id": "m1ac4op2",
+               "name": "agua 700ml",
+               "price": 7
+             },
+             {
+               "id": "m1ac4op3",
+               "name": "gaseosa 500ml",
+               "price": 7
+             },
+             {
+               "id": "m1ac4op4",
+               "name": "gaseosa 700ml",
+               "price": 10
+             }
+           ]
+         }
+       ]
+     },
+     {
+       "id": "m2",
+       "name": "Desayuno",
+       "img": "../../../assets/img/desayunoIcon.svg",
+       "items": [
+         {
+           "id": "d1",
+           "name": "Cafe",
+           "options": [
+             {
+               "id": "m2d1op1",
+               "name": "americano",
+               "price": 5
+             },
+             {
+               "id": "m2d1op2",
+               "name": "con leche",
+               "price": 7
+             }
+           ]
+         },
+         {
+           "id": "d2",
+           "name": "Sandwich",
+           "options": [
+             {
+               "id": "m2d2op1",
+               "name": "jamon y queso",
+               "price": 10
+             }
+           ]
+         },
+         {
+           "id": "d3",
+           "name": "Bebidas",
+           "options": [
+             {
+               "id": "m2d3op1",
+               "name": "jugo natural",
+               "price": 7
+             }
+           ]
+         }
+       ]
+     },
+     {
+       "id": "m3",
+       "name": "Adicionales",
+       "img": "../../../assets/img/adicionalesIcon.svg",
+       "items": [
+         {
+           "id": "a1",
+           "name": "Adicionales",
+           "options": [
+             {
+               "id": "m3a1op1",
+               "name": "huevo",
+               "price": 1
+             },
+             {
+               "id": "m3a1op2",
+               "name": "queso",
+               "price": 1
+             }
+           ]
+         }
+       ]
+     }
+   ]
+ }

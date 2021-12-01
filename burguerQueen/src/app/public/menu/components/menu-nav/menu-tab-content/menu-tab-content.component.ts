@@ -1,5 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Menu } from 'src/app/clases/menu';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { SummaryService } from '../../../../../core/shared/services/summary.service'
+import { Menu } from 'src/app/interfaces/menu.interface';
+import { Options } from 'src/app/interfaces/menu.interface';
+
+
 
 @Component({
   selector: 'app-menu-tab-content',
@@ -7,12 +12,13 @@ import { Menu } from 'src/app/clases/menu';
   styleUrls: ['./menu-tab-content.component.css']
 })
 export class MenuTabContentComponent implements OnInit {
+@Input() e!:Menu;
 
-  @Input() e!: Menu;
-
-  constructor() { }
-
+constructor( private summarySvc:SummaryService) {}
   ngOnInit(): void {
   }
 
+  addToSummary(option: Options): void {
+    this.summarySvc.updateSummary(option);
+  }
 }

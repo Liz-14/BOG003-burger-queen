@@ -7,10 +7,12 @@
     margin-right: 4px;
 }
 
+/*nav menu*/
 .nav-tabs{
     background-color: #292B37;
   }
 
-.nav-link{
-  width: 163px;
-}
+  .nav-link{
+    width: 163px;
+  }
+  
