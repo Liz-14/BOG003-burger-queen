@@ -68,7 +68,6 @@ export class SummaryService {
     this.summary = newSummary;
     this.calcTotal();
   }
-
 }
 
 /*

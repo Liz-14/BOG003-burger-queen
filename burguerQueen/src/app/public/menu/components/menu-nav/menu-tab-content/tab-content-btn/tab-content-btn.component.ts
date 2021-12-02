@@ -17,7 +17,5 @@ export class TabContentBtnComponent implements OnInit {
 
   onClick(): void{
   this.addToSummaryClick.emit(this.op);
-
   }
-
 }

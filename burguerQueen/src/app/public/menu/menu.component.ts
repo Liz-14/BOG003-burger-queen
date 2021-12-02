@@ -10,7 +10,7 @@ import { Orders } from '../../interfaces/orders.interface'
 })
 export class MenuComponent implements OnInit {
 
-  costumerData!: Orders[];
+  custumerData!: Orders[];
 
   constructor( private orderService: FireStoreService ) { }
 
@@ -27,10 +27,10 @@ export class MenuComponent implements OnInit {
       this.orderService.customer$
       .subscribe(
         response => {
-          this.costumerData = response;
-          console.log(response);
+          this.custumerData = response;
+          console.log('customer data: ', response);
         },
-        error => console.log(error)
+        error => console.log('customer error: ', error)
       )
     }
 

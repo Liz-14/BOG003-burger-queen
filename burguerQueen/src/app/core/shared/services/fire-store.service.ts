@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 //import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators'
+import { map } from 'rxjs/operators'
 import { Orders } from '../../../interfaces/orders.interface';
 
 
@@ -15,12 +15,13 @@ export class FireStoreService {
 
 
   customer$!: Observable<Orders[]>;
+  dataOrders$!: Observable<Orders[]>;
   private orders$: Observable<Orders[]>;
   private currentId!: string;
   private orderCollection:  AngularFirestoreCollection<Orders>;
 
   constructor(private afs: AngularFirestore) {
-    this.orderCollection = afs.collection<Orders>('orders');
+    this.orderCollection = afs.collection<Orders>('orders', ref => ref.orderBy('date', 'desc'));
     this.orders$ = this.orderCollection.valueChanges()
   }
 
