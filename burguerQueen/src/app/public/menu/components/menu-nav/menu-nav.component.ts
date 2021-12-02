@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Menu } from 'src/app/interfaces/menu.interface';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Menu, Options } from 'src/app/interfaces/menu.interface';
 import { MenuService } from 'src/app/public/services/menu.service';
 import { SummaryService } from 'src/app/core/shared/services/summary.service';
-//import { FireStoreService } from '../../../../core/shared/services/fire-store.service';
-
-import { tap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-menu-nav',
@@ -12,19 +9,24 @@ import { tap } from 'rxjs/operators'
   styleUrls: ['./menu-nav.component.css']
 })
 export class MenuNavComponent implements OnInit {
-
+  
   menuData!: Menu[];
-  finalOrder$ = this.summarySvc.finalOrder$;
+  orderOptions!: Options[];
+
+  @Output() createOrderClick = new EventEmitter<Options[]>();
 
   constructor(
     private dataService: MenuService,
     private summarySvc: SummaryService
   ) { }
 
+  // carga inicial
   ngOnInit(): void {
     this.getData();
+    this.getOrderOptions();    
   }
 
+  // Obtiene data de json
   getData() {
     this.dataService.getData().subscribe(
       response => {
@@ -32,16 +34,25 @@ export class MenuNavComponent implements OnInit {
       },
       error => console.log(error)
     )
+    
   }
-
+  // obtiene data de resumen
+  getOrderOptions(){
+    this.summarySvc.finalOrder$.subscribe(
+      res =>{
+        this.orderOptions = res;
+      },
+      error => console.log(error)
+    )
+  }
+  // elimina data local del resumen
   onClickDeleteAll(): void {
     this.summarySvc.deleteAll();
   }
-
+  // Envia data de resumen al padre menu-component 
   send(): void {
-    this.finalOrder$
-      .pipe(tap(res => console.log(res)))
-      .subscribe();
+    this.createOrderClick.emit(this.orderOptions)
+    this.summarySvc.deleteAll();
   }
 
 }
