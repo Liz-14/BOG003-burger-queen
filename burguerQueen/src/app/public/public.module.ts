@@ -27,6 +27,7 @@ import { TabContentBtnComponent } from './menu/components/menu-nav/menu-tab-cont
 import { MenuService } from "./services/menu.service";
 import { FireStoreService } from "../core/shared/services/fire-store.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { InPreparationService } from "../core/shared/services/in-preparation.service";
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     exports:[],
     providers:[
         MenuService,
-        FireStoreService
+        FireStoreService,
+        InPreparationService
     ]
 })
 
