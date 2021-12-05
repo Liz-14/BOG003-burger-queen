@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FireStoreService } from 'src/app/core/shared/services/fire-store.service';
 import { Orders } from 'src/app/interfaces/orders.interface';
 
 @Component({
@@ -10,8 +11,12 @@ export class PreparationsComponent implements OnInit {
 
   @Input() item!: Orders;
 
-  constructor() { }
+  constructor(private orderService: FireStoreService) { }
 
   ngOnInit(): void {
+  }
+
+  onClick(item: Orders): void {
+    this.orderService.editDone(item.id);
   }
 }

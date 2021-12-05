@@ -11,7 +11,7 @@ export class ChefComponent implements OnInit {
 
   arrayData!: Orders[];
 
-  constructor(private orderService: FireStoreService,) { }
+  constructor(private orderService: FireStoreService) { }
 
   ngOnInit(): void {
     this.getDataOrders();
