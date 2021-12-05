@@ -12,4 +12,7 @@
     div p{
       font-size: 1.15rem !important;
     }
+    .card-w{
+      width: 350px;
+    }
   }

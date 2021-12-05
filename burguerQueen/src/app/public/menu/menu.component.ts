@@ -28,8 +28,6 @@ export class MenuComponent implements OnInit {
       this.orderService.getCustomerData(this.orderService.currentID)
       .subscribe(
         response => {
-          console.log('customerdata', response);
-          
           this.costumerData = response;
         },
         error => console.log(error)

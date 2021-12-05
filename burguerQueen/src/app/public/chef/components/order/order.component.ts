@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FireStoreService } from 'src/app/core/shared/services/fire-store.service';
-import { InPreparationService } from 'src/app/core/shared/services/in-preparation.service';
 import { Orders } from 'src/app/interfaces/orders.interface';
 
 @Component({
@@ -10,27 +9,16 @@ import { Orders } from 'src/app/interfaces/orders.interface';
 })
 export class OrderComponent implements OnInit {
 
-  arrayData!: Orders[];
+  @Input() item!: Orders;
+  @Input() i!: number;
 
-  constructor(private orderService: FireStoreService, private preparation: InPreparationService) { }
+  constructor(private orderService: FireStoreService) { }
 
   ngOnInit(): void {
-    this.getDataOrders();
   }
 
-  getDataOrders(): void{     
-    this.orderService.dataOrders$
-    .subscribe(
-      response => {
-       this.arrayData = response;
-
-      },
-      error => console.log(error)
-    )
-  }
-
-  onClick(item: any): void{
-    this.preparation.addData(item)
+  onClick(item: Orders): void{
+    this.orderService.editPreparation(item.id)
   }
 
 }

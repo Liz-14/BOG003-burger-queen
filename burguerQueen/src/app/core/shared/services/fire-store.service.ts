@@ -64,4 +64,8 @@ export class FireStoreService {
     )
   }
 
+  editPreparation(id: string): void{
+    this.orderCollection.doc(id).update({preparation: true})
+  }
+
 }

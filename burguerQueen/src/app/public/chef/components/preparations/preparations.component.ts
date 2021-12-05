@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FireStoreService } from 'src/app/core/shared/services/fire-store.service';
-import { InPreparationService } from 'src/app/core/shared/services/in-preparation.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Orders } from 'src/app/interfaces/orders.interface';
 
 @Component({
   selector: 'app-preparations',
@@ -9,9 +8,9 @@ import { InPreparationService } from 'src/app/core/shared/services/in-preparatio
 })
 export class PreparationsComponent implements OnInit {
 
-  dataPreparation$ = this.preparation.finalPrepData$
+  @Input() item!: Orders;
 
-  constructor(private orderService: FireStoreService, private preparation: InPreparationService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
