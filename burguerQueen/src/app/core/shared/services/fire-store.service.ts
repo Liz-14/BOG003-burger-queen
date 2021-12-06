@@ -20,7 +20,7 @@ export class FireStoreService {
 
   constructor(private afs: AngularFirestore) {
     //OrderBy permite ordenar la colección de manera desc de acuerdo a la entrada de date
-    this.orderCollection = afs.collection<Orders>('orders', ref => ref.orderBy('date', 'desc'));
+    this.orderCollection = afs.collection<Orders>('orders', ref => ref.orderBy('date'));
     //valueChanges. Obtiene toda la colección (resumen)
     this.orders$ = this.orderCollection.valueChanges();
     this.getDataOrders();
@@ -54,7 +54,7 @@ export class FireStoreService {
 
   // Metodo que permite insertar el resumen a la data del cliente actual
   insertOrder(id:string, orderData: Options[]): void{
-    this.orderCollection.doc(id).update({order: orderData, date: new Date(), preparation: false});
+    this.orderCollection.doc(id).update({order: orderData, date: new Date(), preparation: false, done: false, delivered: false});
   }
 
   // Metodo que permite obtener toda la data de la collecion orders en tiempo real
@@ -66,6 +66,18 @@ export class FireStoreService {
 
   editPreparation(id: string): void{
     this.orderCollection.doc(id).update({preparation: true})
+  }
+
+  editDone(id: string): void{
+    this.orderCollection.doc(id).update({done: true})
+  }
+
+  editDelivered(id: string): void{
+    this.orderCollection.doc(id).update({delivered: true})
+  }
+
+  getDoneTrue(): Observable<Orders[]>{
+    return this.orders$.pipe(map(data => data.filter(el => el.done === true && el.delivered === false)));
   }
 
 }
