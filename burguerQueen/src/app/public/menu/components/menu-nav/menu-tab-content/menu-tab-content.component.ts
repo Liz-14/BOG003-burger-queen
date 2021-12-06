@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { SummaryService } from '../../../../../core/shared/services/summary.service'
 import { Menu } from 'src/app/interfaces/menu.interface';
 import { Options } from 'src/app/interfaces/menu.interface';
+
 
 
 @Component({
@@ -11,8 +13,8 @@ import { Options } from 'src/app/interfaces/menu.interface';
 })
 export class MenuTabContentComponent implements OnInit {
 @Input() e!:Menu;
-  constructor(private summarySvc: SummaryService) { }
 
+constructor( private summarySvc:SummaryService) {}
   ngOnInit(): void {
   }
 

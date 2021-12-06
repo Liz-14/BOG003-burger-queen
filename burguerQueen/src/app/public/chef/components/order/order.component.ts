@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FireStoreService } from 'src/app/core/shared/services/fire-store.service';
+import { Orders } from 'src/app/interfaces/orders.interface';
 
 @Component({
   selector: 'app-order',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
-  constructor() { }
+  @Input() item!: Orders;
+  @Input() i!: number;
+
+  constructor(private orderService: FireStoreService) { }
 
   ngOnInit(): void {
+  }
+
+  onClick(item: Orders): void{
+    this.orderService.editPreparation(item.id)
   }
 
 }
