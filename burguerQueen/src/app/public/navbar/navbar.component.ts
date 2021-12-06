@@ -9,7 +9,7 @@ import { Orders } from 'src/app/interfaces/orders.interface';
 })
 export class NavbarComponent implements OnInit {
 
-  arrayDoneTrue!: Orders[];
+  arrayDoneTrue: Orders[] = [];
   
   constructor(private orderService: FireStoreService) { }
 
