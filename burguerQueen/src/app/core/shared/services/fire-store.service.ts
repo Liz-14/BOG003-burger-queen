@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 //import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators'
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 import { Orders } from '../../../interfaces/orders.interface';
 import { Options } from '../../../interfaces/menu.interface';
 
@@ -11,7 +11,6 @@ import { Options } from '../../../interfaces/menu.interface';
 })
 
 export class FireStoreService {
-
 
   dataOrders$!: Observable<Orders[]>;
   private orders$: Observable<Orders[]>;
@@ -31,6 +30,10 @@ export class FireStoreService {
     return this.currentId;
   }
 
+  resetCustomerID(): void{
+    this.currentId = '';
+  }
+
   // metodo que permite crear una nueva orden (id, nombre, mesa)
   addOrder(newOrder: Orders): Promise<void>{
     return new Promise(async(res, reject) => {
@@ -48,13 +51,21 @@ export class FireStoreService {
   }
 
   // metodo que permite obtener en el componente la data del cliente actual
-  getCustomerData(id: string): Observable<Orders[]>{
+  getCustomerData$(id: string): Observable<Orders[]>{
     return this.orders$.pipe(map(data => data.filter(el => el.id === id)));
   }
 
   // Metodo que permite insertar el resumen a la data del cliente actual
   insertOrder(id:string, orderData: Options[]): void{
-    this.orderCollection.doc(id).update({order: orderData, date: new Date(), preparation: false, done: false, delivered: false});
+    this.orderCollection.doc(id).update({
+      order: orderData,
+      date: new Date(),
+      preparationDate: new Date(),
+      doneDate: new Date(),
+      deliveredDate: new Date(),
+      preparation: false,
+      done: false, 
+      delivered: false});
   }
 
   // Metodo que permite obtener toda la data de la collecion orders en tiempo real
@@ -65,15 +76,15 @@ export class FireStoreService {
   }
 
   editPreparation(id: string): void{
-    this.orderCollection.doc(id).update({preparation: true})
+    this.orderCollection.doc(id).update({preparation: true, preparationDate: new Date()})
   }
 
   editDone(id: string): void{
-    this.orderCollection.doc(id).update({done: true})
+    this.orderCollection.doc(id).update({done: true, doneDate: new Date()})
   }
 
   editDelivered(id: string): void{
-    this.orderCollection.doc(id).update({delivered: true})
+    this.orderCollection.doc(id).update({delivered: true, deliveredDate: new Date()})
   }
 
   getDoneTrue(): Observable<Orders[]>{

@@ -20,12 +20,8 @@ export class MenuComponent implements OnInit {
     this.getCustomerData();
   }
 
-    /*getCurrentId(): void{
-      console.log(this.orderService.currentID)
-    }*/
-
     getCustomerData(): void{
-      this.orderService.getCustomerData(this.orderService.currentID)
+      this.orderService.getCustomerData$(this.orderService.currentID)
       .subscribe(
         response => {
           this.costumerData = response;
