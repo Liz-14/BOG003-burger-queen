@@ -1,5 +1,5 @@
 .nav-link img{
-    height: 41px;
+    height: 40px;
     padding-top: 5px;
   }
 .nav-link{
@@ -11,7 +11,10 @@
   }
 
 @media(min-width:1270px){
-.nav-link p{
-      font-size: 1.2rem !important;
+  .nav-link p{
+        font-size: 1rem !important;
+      }
+    .nav-link img{
+      height: 32px;
     }
   }

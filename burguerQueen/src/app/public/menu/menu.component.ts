@@ -17,19 +17,13 @@ export class MenuComponent implements OnInit {
   constructor( private orderService: FireStoreService, private router: Router ) { }
 
   ngOnInit(): void {
-    this.orderService.getCustomerData(this.orderService.currentID);
     this.getCustomerData();
   }
 
-    /*getCurrentId(): void{
-      console.log(this.orderService.currentID)
-    }*/
-
     getCustomerData(): void{
-      this.orderService.getCustomerData(this.orderService.currentID)
+      this.orderService.getCustomerData$(this.orderService.currentID)
       .subscribe(
         response => {
-          console.log('customerdata', response);
           this.costumerData = response;
         },
         error => console.log(error)

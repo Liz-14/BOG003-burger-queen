@@ -16,7 +16,7 @@ export class PreparationsComponent implements OnInit {
   ngOnInit(): void { 
   }
 
-  onClick(item: Orders): void{
-    this.orderService.editDone(item.id)
-  }  
+  onClick(item: Orders): void {
+    this.orderService.editDone(item.id);
+  }
 }

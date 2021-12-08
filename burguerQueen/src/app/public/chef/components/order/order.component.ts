@@ -8,35 +8,18 @@ import { Orders } from 'src/app/interfaces/orders.interface';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  // milliseconds!: number;
-
+  
   @Input() item!: Orders;
-  @Input() i!: number;  
+  @Input() i!: number;
 
   constructor(private orderService: FireStoreService) { }
 
   ngOnInit(): void {
-  //  this.getDataOrders();
   }
-/* 
-  getDataOrders(): void{     
-    this.orderService.dataOrders$
-    .subscribe(
-      response => {
-       this.arrayData = response;
-       console.log('data de order',response);
-       
-      },
-      error => console.log(error)
-    )
-  }
-  
-  onClick(dataId:any): void {
-    this.orderService.getId(dataId.getAttribute('data-id'));
-  } */
+
   onClick(item: Orders): void{
-    console.log('que recibe en el click', this.orderService.editPreparation(item.id));  
-    this.orderService.editPreparation(item.id);
+    this.orderService.editPreparation(item.id)
   }
+
 }
   

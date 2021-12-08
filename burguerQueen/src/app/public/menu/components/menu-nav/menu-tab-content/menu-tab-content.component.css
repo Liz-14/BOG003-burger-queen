@@ -11,8 +11,8 @@ p{
 }
 
 @media(min-width:1270px){
-    .tab-content p{
-      font-size: 1.28rem !important;
+    p{
+      font-size: 1.15rem !important;
     }
 }
 

@@ -27,7 +27,7 @@ import { TabContentBtnComponent } from './menu/components/menu-nav/menu-tab-cont
 import { MenuService } from "./services/menu.service";
 import { FireStoreService } from "../core/shared/services/fire-store.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { CustomerComponent } from './menu/components/menu-header/customer/customer.component';
 
 @NgModule({
     imports:[   
@@ -57,7 +57,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     WaiterDoneComponent,
     MenuNavTabComponent,
     MenuTabContentComponent,
-    TabContentBtnComponent
+    TabContentBtnComponent,
+    CustomerComponent
   ],
     exports:[],
     providers:[

@@ -21,8 +21,8 @@ export class ChefComponent implements OnInit {
     this.orderService.dataOrders$
     .subscribe(
       response => {
-       console.log('data de order',response);
        this.arrayData = response;
+
       },
       error => console.log(error)
     )
