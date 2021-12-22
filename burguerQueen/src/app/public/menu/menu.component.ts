@@ -12,7 +12,7 @@ import { Orders } from '../../interfaces/orders.interface'
 })
 export class MenuComponent implements OnInit {
 
-  custumerData!: Orders[];
+  costumerData!: Orders[];
 
   constructor( private orderService: FireStoreService, private router: Router ) { }
 

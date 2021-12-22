@@ -1,5 +1,5 @@
 export const environment = {
-  firebase: {
+  firebaseConfig: {
     projectId: 'burger-queen-194b8',
     appId: '1:459608563400:web:d132e230a3d94a29d50ffd',
     storageBucket: 'burger-queen-194b8.appspot.com',
