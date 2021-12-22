@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FireStoreService } from 'src/app/core/shared/services/fire-store.service';
 import { Orders } from 'src/app/interfaces/orders.interface';
 
@@ -8,27 +8,18 @@ import { Orders } from 'src/app/interfaces/orders.interface';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-
-  arrayData!: Orders[];  
-  milliseconds!: number;
+  
+  @Input() item!: Orders;
+  @Input() i!: number;
 
   constructor(private orderService: FireStoreService) { }
 
   ngOnInit(): void {
-    this.getDataOrders();
   }
 
-  getDataOrders(): void{     
-    this.orderService.dataOrders$
-    .subscribe(
-      response => {
-       this.arrayData = response;
-       console.log('data de order',response);
-       
-      },
-      error => console.log(error)
-    )
+  onClick(item: Orders): void{
+    this.orderService.editPreparation(item.id)
   }
-
 
 }
+  

@@ -12,7 +12,6 @@ import { Options } from '../../../interfaces/menu.interface';
 
 export class FireStoreService {
 
-  customer$!: Observable<Orders[]>;
   dataOrders$!: Observable<Orders[]>;
   private orders$: Observable<Orders[]>;
   private currentId!: string;
@@ -20,15 +19,19 @@ export class FireStoreService {
 
   constructor(private afs: AngularFirestore) {
     //OrderBy permite ordenar la colección de manera desc de acuerdo a la entrada de date
-    this.orderCollection = afs.collection<Orders>('orders');
-    // ref => ref.orderBy('date', 'desc')
+    this.orderCollection = afs.collection<Orders>('orders', ref => ref.orderBy('date'));
     //valueChanges. Obtiene toda la colección (resumen)
     this.orders$ = this.orderCollection.valueChanges();
     this.getDataOrders();
   }
+
   // Permite el llamado al componente para obtener el Id actual
   get currentID(): string{
     return this.currentId;
+  }
+
+  resetCustomerID(): void{
+    this.currentId = '';
   }
 
   // metodo que permite crear una nueva orden (id, nombre, mesa)
@@ -36,7 +39,7 @@ export class FireStoreService {
     return new Promise(async(res, reject) => {
       try{
         const id = {id: this.afs.createId()};
-        const data = {...id, ...newOrder};
+        const data = {...id, ...newOrder, date: new Date()};
         const result = this.orderCollection.doc(id.id).set(data);
         // Aqui se guarda el id actual
         this.currentId = id.id;
@@ -46,21 +49,46 @@ export class FireStoreService {
       }
     })
   }
+
   // metodo que permite obtener en el componente la data del cliente actual
-  getCustomerData(id: string): void{
-    this.customer$ = this.orders$.pipe(map(data => data.filter(el => el.id === id)));
+  getCustomerData$(id: string): Observable<Orders[]>{
+    return this.orders$.pipe(map(data => data.filter(el => el.id === id)));
   }
+
   // Metodo que permite insertar el resumen a la data del cliente actual
   insertOrder(id:string, orderData: Options[]): void{
-    this.orderCollection.doc(id).update({order: orderData});
-    this.orderCollection.doc(id).update({date: new Date()});
-    this.orderCollection.doc(id).update({preparation: false});
+    this.orderCollection.doc(id).update({
+      order: orderData,
+      date: new Date(),
+      preparationDate: new Date(),
+      doneDate: new Date(),
+      deliveredDate: new Date(),
+      preparation: false,
+      done: false,
+      delivered: false});
   }
+
   // Metodo que permite obtener toda la data de la collecion orders en tiempo real
   getDataOrders(): void{
     this.dataOrders$ =  this.orderCollection.snapshotChanges().pipe(
       map(actions => actions.map(el => el.payload.doc.data() as Orders))
     )
+  }
+
+  editPreparation(id: string): void{
+    this.orderCollection.doc(id).update({preparation: true, preparationDate: new Date()})
+  }
+
+  editDone(id: string): void{
+    this.orderCollection.doc(id).update({done: true, doneDate: new Date()})
+  }
+
+  editDelivered(id: string): void{
+    this.orderCollection.doc(id).update({delivered: true, deliveredDate: new Date()})
+  }
+
+  getDoneTrue(): Observable<Orders[]>{
+    return this.orders$.pipe(map(data => data.filter(el => el.done === true && el.delivered === false)));
   }
 
 }

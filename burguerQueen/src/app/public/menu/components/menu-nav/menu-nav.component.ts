@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Menu, Options } from 'src/app/interfaces/menu.interface';
 import { MenuService } from 'src/app/public/services/menu.service';
 import { SummaryService } from 'src/app/core/shared/services/summary.service';
+import { FireStoreService } from 'src/app/core/shared/services/fire-store.service';
 
 @Component({
   selector: 'app-menu-nav',
@@ -9,7 +10,7 @@ import { SummaryService } from 'src/app/core/shared/services/summary.service';
   styleUrls: ['./menu-nav.component.css']
 })
 export class MenuNavComponent implements OnInit {
-  
+
   menuData!: Menu[];
   orderOptions!: Options[];
 
@@ -17,13 +18,14 @@ export class MenuNavComponent implements OnInit {
 
   constructor(
     private dataService: MenuService,
-    private summarySvc: SummaryService
+    private summarySvc: SummaryService,
+    private orderService: FireStoreService
   ) { }
 
   // carga inicial
   ngOnInit(): void {
     this.getData();
-    this.getOrderOptions();    
+    this.getOrderOptions();
   }
 
   // Obtiene data de json
@@ -34,13 +36,13 @@ export class MenuNavComponent implements OnInit {
       },
       error => console.log(error)
     )
-    
+
   }
   // obtiene data de resumen
   getOrderOptions(){
     this.summarySvc.finalOrder$.subscribe(
       res =>{
-        this.orderOptions = res;
+        this.orderOptions = res
       },
       error => console.log(error)
     )
@@ -48,11 +50,13 @@ export class MenuNavComponent implements OnInit {
   // elimina data local del resumen
   onClickDeleteAll(): void {
     this.summarySvc.deleteAll();
+    this.orderService.resetCustomerID();
   }
-  // Envia data de resumen al padre menu-component 
+  // Envia data de resumen al padre menu-component
   send(): void {
     this.createOrderClick.emit(this.orderOptions)
     this.summarySvc.deleteAll();
+    this.orderService.resetCustomerID();
   }
 
 }

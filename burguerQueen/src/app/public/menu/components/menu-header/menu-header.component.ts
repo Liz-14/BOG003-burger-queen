@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Orders } from 'src/app/interfaces/orders.interface';
 
 @Component({
@@ -7,7 +7,9 @@ import { Orders } from 'src/app/interfaces/orders.interface';
   styleUrls: ['./menu-header.component.css']
 })
 export class MenuHeaderComponent implements OnInit {
-  @Input() el!: Orders;
+
+  @Input() costumerData!: Orders[];
+
   constructor() { }
 
   ngOnInit(): void {
