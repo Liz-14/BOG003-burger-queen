@@ -64,7 +64,7 @@ export class FireStoreService {
       doneDate: new Date(),
       deliveredDate: new Date(),
       preparation: false,
-      done: false, 
+      done: false,
       delivered: false});
   }
 
@@ -89,6 +89,10 @@ export class FireStoreService {
 
   getDoneTrue(): Observable<Orders[]>{
     return this.orders$.pipe(map(data => data.filter(el => el.done === true && el.delivered === false)));
+  }
+
+  deleteOrder(id: string): void{
+    this.orderCollection.doc(id).delete()
   }
 
 }

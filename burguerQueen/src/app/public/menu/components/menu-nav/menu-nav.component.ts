@@ -49,6 +49,7 @@ export class MenuNavComponent implements OnInit {
   }
   // elimina data local del resumen
   onClickDeleteAll(): void {
+    this.orderService.deleteOrder(this.orderService.currentID);
     this.summarySvc.deleteAll();
     this.orderService.resetCustomerID();
   }
