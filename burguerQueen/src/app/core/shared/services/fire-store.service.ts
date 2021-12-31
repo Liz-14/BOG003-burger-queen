@@ -91,4 +91,8 @@ export class FireStoreService {
     return this.orders$.pipe(map(data => data.filter(el => el.done === true && el.delivered === false)));
   }
 
+  deleteOrder(id: string): void{
+    this.orderCollection.doc(id).delete()
+  }
+
 }

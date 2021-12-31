@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import {catchError} from 'rxjs/operators'
+import { catchError } from 'rxjs/operators'
 import { Menu } from 'src/app/interfaces/menu.interface';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class MenuService {
 
   //Llamada http para alojar data en el observable
   getData(): Observable<Menu[]>{
-    return this.http.get<Menu[]>('http://localhost:3333/menu').pipe(
+    return this.http.get<Menu[]>('https://61ce31857067f600179c5dec.mockapi.io/menu').pipe(
       catchError(this.handleError)
     )
   }

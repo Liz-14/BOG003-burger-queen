@@ -20,10 +20,14 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+<<<<<<< HEAD
             "outputPath": "dist/burguerQueen",
             "customWebpackConfig": {
               "path": "extraWebpack.config.js"
             },
+=======
+            "outputPath": "dist",
+>>>>>>> pruebas
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
