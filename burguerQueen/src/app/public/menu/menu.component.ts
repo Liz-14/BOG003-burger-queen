@@ -13,6 +13,7 @@ import { Orders } from '../../interfaces/orders.interface'
 export class MenuComponent implements OnInit {
 
   costumerData!: Orders[];
+  isCostumerInactive: boolean = true
 
   constructor( private orderService: FireStoreService, private router: Router ) { }
 
@@ -25,6 +26,7 @@ export class MenuComponent implements OnInit {
       .subscribe(
         response => {
           this.costumerData = response;
+          this.isCostumerInactive = response.length !== 0 ? false : true
         },
         error => console.log('customer error: ', error)
       )

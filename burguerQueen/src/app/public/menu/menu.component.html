@@ -5,7 +5,7 @@
         <app-summary></app-summary>
       </section>
       <section class="col pt-1 bg-primary me-2 ms-1 pe-0" id="menu">
-        <app-menu-nav (createOrderClick)="createOrder($event)"></app-menu-nav>
+        <app-menu-nav (createOrderClick)="createOrder($event)" [isCostumerInactive]='isCostumerInactive'></app-menu-nav>
       </section>
   </main>
 </div>

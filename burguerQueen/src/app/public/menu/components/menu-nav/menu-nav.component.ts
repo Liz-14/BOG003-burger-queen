@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { Menu, Options } from 'src/app/interfaces/menu.interface';
 import { MenuService } from 'src/app/public/services/menu.service';
 import { SummaryService } from 'src/app/core/shared/services/summary.service';
@@ -14,6 +14,7 @@ export class MenuNavComponent implements OnInit {
   menuData!: Menu[];
   orderOptions!: Options[];
 
+  @Input() isCostumerInactive!: boolean;
   @Output() createOrderClick = new EventEmitter<Options[]>();
 
   constructor(
